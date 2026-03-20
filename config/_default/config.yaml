@@ -1,0 +1,19 @@
+
+baseURL: "https://ponomarevava0.github.io/"
+languageCode: "ru-ru"
+title: "Your Name"
+theme: "ananke"
+
+disableAssetsBusting: true
+
+outputs:
+  home: [HTML, RSS, JSON, WebAppManifest, headers, redirects]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  description: "My academic website"
+  author: "Your Name"

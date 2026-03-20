@@ -1,0 +1,4 @@
+[submodule "PonomarevaVA0.github.io"]
+	path = PonomarevaVA0.github.io
+	url = git@github.com:PonomarevaVA0/PonomarevaVA0.github.io.git
+	branch = main
