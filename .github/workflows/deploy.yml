@@ -1,13 +1,13 @@
 name: Deploy website to GitHub Pages
 
 on:
-  # Trigger the workflow every time y>
+  # Trigger the workflow every time you push to the main branch
   push:
     branches: ['main']
-  # Allows you to run this workflow m>
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Provide permission to clone the rep>
+# Provide permission to clone the repo and deploy to Pages
 permissions:
   contents: read
   pages: write
@@ -20,10 +20,10 @@ concurrency:
 jobs:
   # Check deployment configuration
   config:
-    if: github.repository_owner != 'H>
+    if: github.repository_owner != 'HugoBlox'
     runs-on: ubuntu-latest
     outputs:
-      deploy-host: ${{ steps.check.ou>
+      deploy-host: ${{ steps.check.outputs.host }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -34,47 +34,47 @@ jobs:
     - name: Check deploy host
       id: check
       run: |
-        # Install pinned yq version f>
+        # Install pinned yq version for reliable parsing
         YQ_VERSION="v4.44.1"
-        if ! wget -q --tries=3 --wait>
-          "https://github.com/mikefar>
-          echo "::error::Failed to do>
+        if ! wget -q --tries=3 --waitretry=5 -O /tmp/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"; then
+          echo "::error::Failed to download yq"
           exit 1
         fi
-        sudo mv /tmp/yq /usr/local/bi>
-        sudo chmod +x /usr/local/bin/>
+        sudo mv /tmp/yq /usr/local/bin/yq
+        sudo chmod +x /usr/local/bin/yq
 
-        # Read deploy.host from hugob>
-        HOST=$(yq '.deploy.host // "">
+        # Read deploy.host from hugoblox.yaml
+        HOST=$(yq '.deploy.host // ""' hugoblox.yaml)
         HOST=${HOST:-github-pages}
 
         # Validate known hosts
-        if [[ ! "$HOST" =~ ^(github-p>
-          echo "::warning::Unknown de>
+        if [[ ! "$HOST" =~ ^(github-pages|netlify|cloudflare|aws|azure|firebase|vercel|render|heroku|digitalocean|unknown)$ ]]; then
+          echo "::warning::Unknown deploy host: $HOST, falling back to github-pages"
           HOST="github-pages"
         fi
 
-       	echo "host=$HOST" >> $GITHUB_>
-        echo "Deployment target: $HOS>
+        echo "host=$HOST" >> $GITHUB_OUTPUT
+        echo "Deployment target: $HOST"
 
-  # Build website using reusable work>
-  build:  needs: config
-    if: github.repository_owner != 'H>
-    uses: ./.github/workflows/build.y>
+  # Build website using reusable workflow
+  build:
+    needs: config
+    if: github.repository_owner != 'HugoBlox'
+    uses: ./.github/workflows/build.yml
     secrets: inherit
 
-  # Deploy website to GitHub Pages ho>
+  # Deploy website to GitHub Pages host
   deploy:
     needs: [config, build]
-    if: needs.config.outputs.deploy-h>
-    # Grant GITHUB_TOKEN the permissi>
+    if: needs.config.outputs.deploy-host == 'github-pages'
+    # Grant GITHUB_TOKEN the permissions required to deploy to Pages
     permissions:
-      pages: write # to deploy to Pag>
-      id-token: write # to verify the>
-    # Deploy to the github-pages envi>
+      pages: write
+      id-token: write
+    # Deploy to the github-pages environment
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outpu>
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to GitHub Pages
