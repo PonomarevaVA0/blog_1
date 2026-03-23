@@ -64,3 +64,4 @@ security:
   _merge: deep
 sitemap:
   _merge: deep
+theme: ananke
