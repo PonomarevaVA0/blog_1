@@ -64,9 +64,3 @@ security:
 sitemap:
   _merge: deep
 theme: ananke
-module:
-  replacements:
-    - path: github.com/HugoBlox/theme-academic-cv
-      path: themes/ananke
-  imports:
-    - path: github.com/HugoBlox/theme-academic-cv
