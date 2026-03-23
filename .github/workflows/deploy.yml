@@ -28,7 +28,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-	sparse-checkout: hugoblox.yaml   sparse-checkout-cone-mode: fa>
+        sparse-checkout: hugoblox.yaml
+        sparse-checkout-cone-mode: false
 
     - name: Check deploy host
       id: check
