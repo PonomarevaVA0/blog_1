@@ -32,7 +32,7 @@ cascade:
 ############################
 
 build:
-  writeStats: true
+  writeStats: false
 enableGitInfo: false
 summaryLength: 30
 pagination:
@@ -64,3 +64,4 @@ security:
 sitemap:
   _merge: deep
 theme: ananke
+ignoreFiles: ['**/*_entry.css']
