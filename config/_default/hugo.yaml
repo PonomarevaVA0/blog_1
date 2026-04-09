@@ -40,7 +40,8 @@ pagination:
 enableEmoji: true
 enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
-ignoreFiles: [".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+ignoreFiles: [".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$",'.*_entry\.css$']
+
 disableAliases: true
 outputs:
   home: [HTML, RSS, headers, redirects, backlinks]
@@ -64,4 +65,4 @@ security:
 sitemap:
   _merge: deep
 theme: ananke
-ignoreFiles: ['**/*_entry.css']
+

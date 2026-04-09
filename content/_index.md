@@ -42,11 +42,10 @@ sections:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        Use this area to speak to your mission. I'm a research scientist in the Moonshot team at DeepMind. I blog about machine learning, deep learning, and moonshots.
+        Я студентка РУДН, мне 19 лет, учусь на направлении «Прикладная информатика». В блоге пишу о программировании, автоматизации и всём, что связано с IT. 
+        В своих учебных и небольших исследовательских проектах применяю разные методы — от анализа данных до описательных обзоров, чтобы лучше понять, как информационные технологии меняют экономику и повседневную жизнь.
 
-        I apply a range of qualitative and quantitative methods to comprehensively investigate the role of science and technology in the economy.
-
-        Please reach out to collaborate 😃
+Буду рада знакомству и совместным идеям 
     design:
       columns: '1'
   - block: collection
