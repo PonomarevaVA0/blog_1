@@ -1,7 +1,7 @@
 
 baseURL: "https://ponomarevava0.github.io/"
 languageCode: "ru-ru"
-title: "Your Name"
+title: "Ponomareva Varvara"
 theme: "ananke"
 
 disableAssetsBusting: true
@@ -16,4 +16,4 @@ markup:
 
 params:
   description: "My academic website"
-  author: "Your Name"
+  author: "Ponomareva Varvara"

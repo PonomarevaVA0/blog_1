@@ -22,19 +22,30 @@ affiliations:
     url: https://www.rudn.ru/
 
 links:
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?view_op=new_profile&hl=ru&authuser=1
+    label: Google Scholar
+  - icon: academicons/orcid
+    url: https://orcid.org/0009-0000-3695-3717
+    label: ORCID
+  - icon: brands/github
+    url: https://github.com/PonomarevaVA0
+    label: GitHub
+  - icon: academicons/researchgate
+    url: https://www.researchgate.net/profile/Varvara-Ponomareva-3
+    label: ResearchGate
+  - icon: academicons/academia
+    url: https://independent.academia.edu/ВарвараПономарева4
+    label: Academia.edu
+  - icon: academicons/arxiv
+    url: https://arxiv.org/
+    label: arXiv
   - icon: at-symbol
     url: mailto:1032253635@rudn.ru
     label: E-mail Me
-  - icon: brands/x
-    url: https://x.com/example
-  - icon: brands/github
-    url: https://github.com/PonomarevaVA0
-  - icon: brands/linkedin
-    url: https://www.linkedin.com/in/example/
-  - icon: academicons/google-scholar
-    url: https://scholar.google.com/citations?user=example
-  - icon: academicons/orcid
-    url: https://orcid.org/0000-0002-1825-0097
+  - icon: brands/mendeley
+    url: https://www.mendeley.com/
+    label: Mendeley7
 
 interests:
   - Программирование
